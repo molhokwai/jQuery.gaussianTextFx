@@ -48,12 +48,7 @@
     }
     /**/
     
-    var initialText=null;
     $(document).ready(function(){
-        if (!initialText){
-            initialText=$('#woohoo').html();
-        }
-        
         if ( options && 'fx' in options && options.fx._do) {
             $('#woohoo').gaussTextFx(options);
         }

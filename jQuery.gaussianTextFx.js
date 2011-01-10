@@ -15,7 +15,8 @@ var gaussText={
       Fx : {
         text : {
             start : 0,
-            initial : null
+            initial : null,
+            timeOut : null
         }
       }
     },
@@ -54,6 +55,14 @@ var gaussText={
     }
 */
 $.fn.gaussText=function(options){
+    var gt_s_fx=gaussText.Settings.Fx;
+    if (!gt_s_fx.text.initial) {
+        gt_s_fx.text.initial=$('#woohoo').html();
+    }
+
+    /* First reinitialization of the text before application */
+    $('#woohoo').html(gt_s_fx.text.initial);
+
     var start=0;
     var stop=$(this).html().length;
     var u='em';
@@ -106,9 +115,7 @@ $.fn.gaussTextFx=function(options){
         options.text.start=gt_s_fx.text.start;
     }
 
-    /* Actual effect application 
-        first reinitialization of the text and then efect application */
-    $('#woohoo').html(gt_s_fx.text.initial);
+    /* Actual effect application */
     $(this).gaussText(options);
     
     /* Text start decrement for movement effect */
@@ -118,6 +125,6 @@ $.fn.gaussTextFx=function(options){
     if (options && 'fx' in options && 'speed' in options.fx) {
         speed=options.fx.speed;
     }
-    setTimeout('gaussText.Element.gaussTextFx(gaussText.Options)', speed);
+    gaussText.fx.text.timeOut=setTimeout('gaussText.Element.gaussTextFx(gaussText.Options)', speed);
 };
 
