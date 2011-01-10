@@ -122,6 +122,6 @@ $.fn.gaussTextFx=function(options){
     if (options && 'fx' in options && 'speed' in options.fx) {
         speed=options.fx.speed;
     }
-    gaussText.fx.text.timeOut=setTimeout('gaussText.Element.gaussTextFx(gaussText.Options)', speed);
+    gaussText.Settings.Fx.text.timeOut=setTimeout('gaussText.Element.gaussTextFx(gaussText.Options)', speed);
 };
 
