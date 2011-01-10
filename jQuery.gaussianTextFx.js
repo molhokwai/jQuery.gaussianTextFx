@@ -96,6 +96,7 @@ $.fn.gaussTextFx=function(options){
     gaussText.Element = $(this);
 
     /* Settings & configuration */
+    var gt_s_fx=gaussText.Settings.Fx;
     if (gt_s_fx.text.start==0) {
         /* Text start variable for movement effect*/
         gt_s_fx.text.start=gt_s_fx.text.initial.length;
