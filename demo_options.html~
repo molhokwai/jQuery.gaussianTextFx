@@ -1,0 +1,92 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="https://github.com/molhokwai/jquery-Gaussian-Text-Fx-Plugin/raw/master/jQuery.gaussianTextFx.js"></script>
+<script type="text/javascript">
+    var options=null;
+
+    /**/
+    //##########################################
+    //  Optional... well... options...
+    //##########################################
+
+    options={
+        'fx'   : {
+            '_do' : false,
+            'speed' : 150
+        },
+        
+        'text' : {
+            //-----------------------------
+            //  Text parsing effect application parameter:
+            //    start     : where the gaussion effect's application starts
+            //    stop      : where the gaussion effect's application stops
+            //    unit      : the css font size unit
+            //    unit_start : the first character on which the effect is applied initial's css font size unit
+            //-----------------------------
+            'start' : 20,
+            'stop' : 20,
+            'unit' : 'em',
+            'unit_start' : 1,
+        },
+        
+        gauss : {
+            //-----------------------------
+            //  Gaussian parameters:
+            //    a : controls the amplitude
+            //    b : controls the... 'step'
+            //    c : controls the 'frequency'
+            //-----------------------------
+            'a' : 1.5,
+            'b' : 8,
+            'c' : 0.4
+        }
+    };
+    if (!options || !options.fx || !options.fx._do){
+        //---------------------------------------------------------------------
+        //  If no effect, gauss application start option is to be set here
+        //---------------------------------------------------------------------
+        options.text.start = 0;
+    }
+    /**/
+    
+    $(document).ready(function(){
+        if ( options && 'fx' in options && options.fx._do) {
+            $('#woohoo').gaussTextFx(options);
+        }
+        else {
+            $('#woohoo').gaussText(options);
+        }
+    });
+
+    var optionsFxToggle=function(){
+        if (!$('#juust_to_toggle').is(':visible')){
+            options.text.start = 20;
+            options.fx._do=true;
+             $('#woohoo').gaussTextFx(options);
+        }
+        else {
+            if (gaussText.Settings.Fx.text.timeOut) {
+                clearTimeout(gaussText.Settings.Fx.text.timeOut);
+            }
+            options.text.start = 0;
+            $('#woohoo').gaussText(options);
+        }
+        
+    }
+</script>
+<h2>jQuery.gaussianTextFx.js</h2>
+<p class="padl2pc">A simple gaussian text fx jquery  (plugin candidate) .js file.
+<br/>Requires jquery-1.4.2+.</p>
+
+<h2 class="margt5pc">Demo</h2>
+
+<p id="p_woohoo">"<span id="woohoo">WOOOOOOOHOOOOOOOOOOO</span>!!!..."</p>
+<span id="juust_to_toggle">&nbsp;</span>
+<input type="button" onclick="$('#juust_to_toggle').toggle('fast', optionsFxToggle)" value="toggle movement effect" class="width35pc"/>
+
+<h2 class="margt5pc">Git Project</h2>
+<p class="padl2pc">Here: <a href="https://github.com/molhokwai/jquery-Gaussian-Text-Fx-Plugin">github.com/molhokwai/jquery-Gaussian-Text-Fx-Plugin</a> </p>
+
+<h2 class="margt5pc">Enjoy</h2>
+<p class="padl2pc">...</p>
+
+
